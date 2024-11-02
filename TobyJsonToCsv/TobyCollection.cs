@@ -19,12 +19,6 @@ public class TobyCollection
             .Where(x => !string.IsNullOrWhiteSpace(x)).ToList()
             .ConvertAll(tag => $"#{tag}");
         
-        if (cleanedTags.Count == 0)
-            return string.Empty;
-        
-        if (cleanedTags.Count == 1)
-            return cleanedTags[0];
-        
         return string.Join("", cleanedTags);
     }
 
