@@ -19,17 +19,7 @@ namespace TobyJsonToCsv
             var tobyObject = JsonSerializer.Deserialize<TobyObject>(tobyJsonContent, jsonSerializerOptions);
             var rainDropCsv = tobyObject!.ToRainDropCsv();
 
-            var rainDropFileLines = new List<string> { "url, folder, title, note, tags, created" };
-            
-            foreach (var tobyCollection in tobyObject!.Lists)
-            {
-                rainDropFileLines
-                    .AddRange(tobyCollection.Cards
-                        .Select(tobyCard => new RainDropCsvLine(tobyCard.Url, $"tobyImported/{tobyCollection.Title}", tobyCard.Title, tobyCard.Note, tobyCollection.Tags, tobyCollection.CreationTime))
-                        .Select(rainDropItem => rainDropItem.GetCsvLine()));
-            }
-
-            File.WriteAllLines("/home/raven/Downloads/toby-export-sample.csv", rainDropFileLines);
+            File.WriteAllLines("/home/raven/Downloads/toby-export-sample.csv", rainDropCsv.GetCsvLines());
         }
     }
 }
