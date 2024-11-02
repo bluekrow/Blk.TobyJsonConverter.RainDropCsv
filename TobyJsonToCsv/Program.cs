@@ -15,12 +15,6 @@ namespace TobyJsonToCsv
                 PropertyNameCaseInsensitive = true
             };
             var tobyObject = JsonSerializer.Deserialize<TobyObject>(tobyJsonContent, jsonSerializerOptions);
-            if (tobyObject == null)
-            {
-                Console.WriteLine("tobyObject is null");
-                return;
-            }
-
             var rainDropFileLines = new List<string>();
             rainDropFileLines.Add("url, folder, title, note, tags, created");
 
