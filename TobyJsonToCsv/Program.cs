@@ -9,11 +9,7 @@ namespace TobyJsonToCsv
     {
         public static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
-
             var tobyJsonContent = File.ReadAllText("/home/raven/Downloads/toby-export-sample.json");
-            Console.WriteLine(tobyJsonContent.Length); //3754
-
             var jsonSerializerOptions = new JsonSerializerOptions
             {
                 IncludeFields = true,
@@ -26,15 +22,8 @@ namespace TobyJsonToCsv
                 return;
             }
 
-            Console.WriteLine(tobyObject.Version);
-            Console.WriteLine(tobyObject.Lists.Length);
-            Console.WriteLine(tobyObject.Lists[0].Title);
-
-            Console.WriteLine("-------------");
-
             var rainDropFileLines = new List<string>();
             rainDropFileLines.Add("url, folder, title, note, tags, created");
-            Console.WriteLine("url, folder, title, note, tags, created");
 
             foreach (var tobyCollection in tobyObject.Lists)
             {
@@ -44,7 +33,6 @@ namespace TobyJsonToCsv
                         tobyCard.Title, tobyCard.Note,
                         tobyCollection.Tags, tobyCollection.CreationTime);
                     var rainDropLine = rainDropItem.GetCsvLine();
-                    Console.WriteLine(rainDropLine);
                     rainDropFileLines.Add(rainDropLine);
                 }
             }
