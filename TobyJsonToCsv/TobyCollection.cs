@@ -8,14 +8,13 @@ public class TobyCollection
     public TobyCard[] Cards;
     public string[] Labels;
 
-    public string Tags => GetTags();
+    public string Tags => GetTags(Labels, DateFromTitle(Title).HasValue ? DateFromTitle(Title).Value.ToString("yyyy-MM-dd"): string.Empty);
 
-    private string GetTags()
+    private string GetTags(string[] tagSources, string additionalTagSource)
     {
-        List<string> tags = new List<string>();
-        tags.AddRange(Labels.ToList());
-        var dateTagFromTitle = DateFromTitle().HasValue ? DateFromTitle().Value.ToString("yyyy-MM-dd"): string.Empty;
-        tags.Add(dateTagFromTitle);
+        var tags = new List<string>();
+        tags.AddRange(tagSources.ToList());
+        tags.Add(additionalTagSource);
         var cleanedTags = tags
             .Where(x => !string.IsNullOrWhiteSpace(x)).ToList()
             .ConvertAll(tag => $"#{tag}");
@@ -29,10 +28,10 @@ public class TobyCollection
         return string.Join("", cleanedTags);
     }
 
-    private DateTime? DateFromTitle()
+    private DateTime? DateFromTitle(string dateTimeText)
     {
         //"May 21 at 14:09"
-        return DateTime.TryParseExact(Title, "MMM dd \"at\" HH:mm", CultureInfo.InvariantCulture, DateTimeStyles.None, out var dateFromTitle)
+        return DateTime.TryParseExact(dateTimeText, "MMM dd \"at\" HH:mm", CultureInfo.InvariantCulture, DateTimeStyles.None, out var dateFromTitle)
             ? dateFromTitle
             : null; 
     }
@@ -41,6 +40,6 @@ public class TobyCollection
 
     private string DateFromTitleAsString()
     {
-        return DateFromTitle().HasValue ? DateFromTitle().Value.ToString("s") : string.Empty;
+        return DateFromTitle(Title).HasValue ? DateFromTitle(Title).Value.ToString("s") : string.Empty;
     }
 }
