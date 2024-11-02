@@ -23,17 +23,17 @@ internal static class RainDropCsvConversion
             new KeyValuePair<string, string>(nameof(tobyCard.CustomDescription), tobyCard.CustomDescription);
 
         var tagsBuilder = new TagsBuilder();
-        var dateFormatter = new DateFormatter();
+        var dateFormatter = new DateFormatter(tobyCollection.Title);
         
         var rainDropCsvLine = new RainDropCsvLine(tobyCard.Url,
             $"tobyImported/{tobyCollection.Title}",
             tobyCard.Title,
             GetNote(noteSource, anotherNoteSource),
-            tagsBuilder.GetTags(tobyCollection.Labels, dateFormatter.DateFromTitle(tobyCollection.Title).HasValue ? dateFormatter.DateFromTitle(tobyCollection.Title).Value.ToString("yyyy-MM-dd"): string.Empty),
-            dateFormatter.DateFromTitleAsString(tobyCollection.Title));
+            tagsBuilder.GetTags(tobyCollection.Labels, dateFormatter.GetDateTag()),
+            dateFormatter.DateFromTitleAsString());
         return rainDropCsvLine;
     }
-    
+
     private static string GetNote(KeyValuePair<string, string> noteSource, KeyValuePair<string, string> anotherNoteSource)
     {
         var noteLines = new List<KeyValuePair<string,string>>
