@@ -1,0 +1,71 @@
+{
+  "version": 3,
+  "lists": [
+    {
+      "title": "Github actions sample",
+      "cards": [
+        {
+          "title": "Inbox (693)",
+          "url": "https://mail.google.com/mail/u",
+          "customTitle": "",
+          "customDescription": ""
+        },
+        {
+          "title": "search results",
+          "url": "https://github.com/search",
+          "customTitle": "",
+          "customDescription": ""
+        },
+        {
+          "title": "ndioses@voxelgroup.net mail",
+          "url": "https://mail.google.com",
+          "customTitle": "",
+          "customDescription": "another email link"
+        }
+      ],
+      "labels": ["Work"]
+    },
+    {
+      "title": "May 21 at 17:34",
+      "cards": [
+        {
+          "title": "Inbox (693) - ndioses@voxelgroup.net",
+          "url": "https://mail.google.com/mail/u/0/#inbox",
+          "customTitle": "mail",
+          "customDescription": "inbox from vxl"
+        },
+        {
+          "title": "Repository search results",
+          "url": "https://github.com/search?q=org%",
+          "customTitle": "gh repo",
+          "customDescription": ""
+        }
+      ],
+      "labels": ["custom,work"]
+    },
+    {
+      "title": "Dec 25 at 00:00",
+      "cards": [
+        {
+          "title": "amazon.com",
+          "url": "https://mail.google.com/mail/u/0/#inbox",
+          "customTitle": "",
+          "customDescription": ""
+        }
+      ],
+      "labels": []
+    },
+    {
+      "title": "Custom collection",
+      "cards": [
+        {
+          "title": "custom.com",
+          "url": "https://mail.custom.com",
+          "customTitle": "",
+          "customDescription": ""
+        }
+      ],
+      "labels": []
+    }
+  ]
+}
