@@ -7,8 +7,8 @@ public class TobyCollection
     public string Title;
     public TobyCard[] Cards;
     public string[] Labels;
-
     public string Tags => GetTags(Labels, DateFromTitle(Title).HasValue ? DateFromTitle(Title).Value.ToString("yyyy-MM-dd"): string.Empty);
+    public string CreationTime => DateFromTitleAsString(Title);
 
     private string GetTags(string[] tagSources, string additionalTagSource)
     {
@@ -30,10 +30,8 @@ public class TobyCollection
             : null; 
     }
     
-    public string CreationTime => DateFromTitleAsString();
-
-    private string DateFromTitleAsString()
+    private string DateFromTitleAsString(string dateTimeText)
     {
-        return DateFromTitle(Title).HasValue ? DateFromTitle(Title).Value.ToString("s") : string.Empty;
+        return DateFromTitle(dateTimeText).HasValue ? DateFromTitle(dateTimeText).Value.ToString("s") : string.Empty;
     }
 }
