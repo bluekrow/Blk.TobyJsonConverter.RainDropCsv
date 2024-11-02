@@ -1,5 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
 using System.Text.Json;
+using TobyJsonToCsv.RainDrop;
 
 [assembly: InternalsVisibleTo("TobyJsonToCsv.Tests")]
 namespace TobyJsonToCsv
@@ -16,12 +17,15 @@ namespace TobyJsonToCsv
                 PropertyNameCaseInsensitive = true
             };
             var tobyObject = JsonSerializer.Deserialize<TobyObject>(tobyJsonContent, jsonSerializerOptions);
+            var rainDropCsv = tobyObject!.ToRainDropCsv();
+
             var rainDropFileLines = new List<string> { "url, folder, title, note, tags, created" };
+            
             foreach (var tobyCollection in tobyObject!.Lists)
             {
                 rainDropFileLines
                     .AddRange(tobyCollection.Cards
-                        .Select(tobyCard => new RainDropItem(tobyCard.Url, $"tobyImported/{tobyCollection.Title}", tobyCard.Title, tobyCard.Note, tobyCollection.Tags, tobyCollection.CreationTime))
+                        .Select(tobyCard => new RainDropCsvLine(tobyCard.Url, $"tobyImported/{tobyCollection.Title}", tobyCard.Title, tobyCard.Note, tobyCollection.Tags, tobyCollection.CreationTime))
                         .Select(rainDropItem => rainDropItem.GetCsvLine()));
             }
 

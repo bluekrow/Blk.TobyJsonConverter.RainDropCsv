@@ -1,6 +1,6 @@
-namespace TobyJsonToCsv;
+namespace TobyJsonToCsv.RainDrop;
 
-public record RainDropItem(
+internal record RainDropCsvLine(
     string Url,
     string Folder,
     string Title,
