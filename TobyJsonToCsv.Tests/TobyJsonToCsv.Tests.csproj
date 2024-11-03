@@ -32,6 +32,10 @@
       <None Update="Resources\sourceTobyExported.json">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
+      <None Update="RainDrop\RainDropConverterShould.ProduceRainDropCsvLines.verified.txt">
+        <ParentFile>RainDropConverterShould</ParentFile>
+        <DependentUpon>RainDropConverterShould.cs</DependentUpon>
+      </None>
     </ItemGroup>
 
 </Project>

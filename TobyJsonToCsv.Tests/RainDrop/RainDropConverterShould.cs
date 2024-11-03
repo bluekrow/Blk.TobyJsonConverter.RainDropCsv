@@ -1,7 +1,7 @@
 using System.Text.Json;
 using TobyJsonToCsv.RainDrop;
 
-namespace TobyJsonToCsv.Tests;
+namespace TobyJsonToCsv.Tests.RainDrop;
 
 public class RainDropConverterShould
 {
