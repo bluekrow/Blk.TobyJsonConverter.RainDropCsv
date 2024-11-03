@@ -6,19 +6,15 @@ namespace TobyJsonToCsv.Tests.RainDrop;
 public class LineNoteShould
 {
     [Fact]
-    public void ProduceNoteTextWithCurrentAndNewMethods()
+    public void GetANoteText()
     {
-        var currentLineNote = new LineNote();
-        var currentLineNoteContent = currentLineNote.GetNote(
-                new KeyValuePair<string, string>("notePart1", "notePartContent1"),
-                new KeyValuePair<string, string>("notePart2", "notePartContent2")
-        );
+        var lineNote = new LineNote();
+        lineNote.AddNotePart("notePart1", "notePartContent1");
+        lineNote.AddNotePart("notePart2", "notePartContent2");
+       
+        var noteText = lineNote.GetNoteText();
 
-        var newLineNote = new LineNote();
-        newLineNote.AddNotePart("notePart1", "notePartContent1");
-        newLineNote.AddNotePart("notePart2", "notePartContent2");
-        var newLineNoteContent = newLineNote.GetNote();
-        
-        currentLineNoteContent.Should().Be(newLineNoteContent);
+        const string EXPECTED_NOTE_TEXT = "notePart1: notePartContent1|notePart2: notePartContent2";
+        noteText.Should().Be(EXPECTED_NOTE_TEXT);
     }
 }
