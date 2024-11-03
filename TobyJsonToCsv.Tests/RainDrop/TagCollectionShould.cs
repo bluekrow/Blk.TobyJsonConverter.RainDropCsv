@@ -19,4 +19,19 @@ public class TagCollectionShould
         
         tagString.Should().Be("#one tag#another tag#even another tag");
     }
+    
+    [Fact]
+    public void CleanEmptyTagsOnTagString()
+    {
+        var tagCollection = new TagCollection();
+        const string TAG1 = "one tag";
+        const string TAG2 = "even another tag";
+        tagCollection.AddTags([TAG1,string.Empty]);
+        tagCollection.AddTag(TAG2);
+        
+        var tagString = tagCollection.GetTags();
+        
+        tagString.Should().Be("#one tag#even another tag");
+    }
+
 }
