@@ -22,7 +22,7 @@ internal static class RainDropCsvConversion
         var anotherNoteSource =
             new KeyValuePair<string, string>(nameof(tobyCard.CustomDescription), tobyCard.CustomDescription);
 
-        var tagsBuilder = new TagsBuilder();
+        var tagsBuilder = new TagCollection();
         var dateFormatter = new DateFormatter(tobyCollection.Title);
         
         var rainDropCsvLine = new RainDropCsvLine(tobyCard.Url,
