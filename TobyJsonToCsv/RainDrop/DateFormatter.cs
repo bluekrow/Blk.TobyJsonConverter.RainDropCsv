@@ -1,6 +1,6 @@
 using System.Globalization;
 
-namespace TobyJsonToCsv;
+namespace TobyJsonToCsv.RainDrop;
 
 public class DateFormatter(string timeText)
 {

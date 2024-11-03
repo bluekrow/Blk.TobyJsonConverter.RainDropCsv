@@ -1,6 +1,4 @@
-using System.Globalization;
-
-namespace TobyJsonToCsv;
+namespace TobyJsonToCsv.RainDrop;
 
 public class TagsBuilder
 {
