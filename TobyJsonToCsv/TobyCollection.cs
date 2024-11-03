@@ -2,9 +2,9 @@ using System.Globalization;
 
 namespace TobyJsonToCsv;
 
-public class TobyCollection
+public class TobyCollection(string title, TobyCard[] cards, string[] labels)
 {
-    public string Title;
-    public TobyCard[] Cards;
-    public string[] Labels;
+    public readonly string Title = title;
+    public readonly TobyCard[] Cards = cards;
+    public readonly string[] Labels = labels;
 }

@@ -2,10 +2,10 @@ using TobyJsonToCsv.RainDrop;
 
 namespace TobyJsonToCsv;
 
-public class TobyCard
+public class TobyCard(string title, string url, string customTitle, string customDescription)
 {
-    public string Title;
-    public string Url;
-    public string CustomTitle;
-    public string CustomDescription;
+    public readonly string Title = title;
+    public readonly string Url = url;
+    public readonly string CustomTitle = customTitle;
+    public readonly string CustomDescription = customDescription;
 }
