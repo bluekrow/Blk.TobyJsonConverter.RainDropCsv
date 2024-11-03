@@ -1,8 +1,8 @@
 namespace TobyJsonToCsv.RainDrop;
 
-public static class LineNote
+public class LineNote
 {
-    public static string GetNote(KeyValuePair<string, string> noteSource, KeyValuePair<string, string> anotherNoteSource)
+    public string GetNote(KeyValuePair<string, string> noteSource, KeyValuePair<string, string> anotherNoteSource)
     {
         var noteLines = new List<KeyValuePair<string,string>>
         {

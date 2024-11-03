@@ -12,12 +12,16 @@ public static class ConvertToRaindropItem
         var tagCollection = new TagCollection();
         tagCollection.AddTags(tobyCollection.Labels);
         tagCollection.AddTag(dateFormatter.GetDateTag());
+
+        var lineNote = new LineNote();
         
         var rainDropCsvLine = new RainDropCsvLine(tobyCard.Url,
             $"tobyImported/{tobyCollection.Title}",
-            tobyCard.Title, LineNote.GetNote(noteSource, anotherNoteSource),
+            tobyCard.Title,
+            lineNote.GetNote(noteSource, anotherNoteSource),
             tagCollection.GetTags(),
             dateFormatter.DateFromTitleAsString());
+        
         return rainDropCsvLine;
     }
 }
