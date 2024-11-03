@@ -22,14 +22,16 @@ internal static class RainDropCsvConversion
         var anotherNoteSource =
             new KeyValuePair<string, string>(nameof(tobyCard.CustomDescription), tobyCard.CustomDescription);
 
-        var tagsBuilder = new TagCollection();
         var dateFormatter = new DateFormatter(tobyCollection.Title);
+        var tagCollection = new TagCollection();
+        tagCollection.AddTags(tobyCollection.Labels);
+        tagCollection.AddTag(dateFormatter.GetDateTag());
         
         var rainDropCsvLine = new RainDropCsvLine(tobyCard.Url,
             $"tobyImported/{tobyCollection.Title}",
             tobyCard.Title,
             GetNote(noteSource, anotherNoteSource),
-            tagsBuilder.GetTags(tobyCollection.Labels, dateFormatter.GetDateTag()),
+            tagCollection.GetTags(),
             dateFormatter.DateFromTitleAsString());
         return rainDropCsvLine;
     }
