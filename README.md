@@ -19,15 +19,20 @@ git clone git@github.com:bluekrow/Blk.TobyJsonConverter.RainDropCsv.git
 
 Next, restore the packages
 ```
+cd Blk.TobyJsonConverter.RainDropCsv
 dotnet restore
 ```
 
-
 Then build it:
 ```
-cd Blk.TobyJsonConverter.RainDropCsv
 dotnet build
 ```
+
+You can run the tests, although they should have been automatically run with every merge/push to the main branch
+```
+dotnet test
+```
+
 
 Finally, you can run it. The application receives two parameters:
 - arg1: input Toby json file path
